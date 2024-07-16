@@ -37,7 +37,6 @@ function parseConfig() {
 
 Max.addHandler("dump", async () => {
   var devices = await getDevices();
-  console.log(devices);
   for (let i = 0; i < devices.length; i++) {
     Max.post(JSON.stringify(devices[i]));
   }

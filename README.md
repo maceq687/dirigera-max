@@ -2,6 +2,8 @@
 
 Dirigera Max is a Max MSP package for controlling smart lights connected to the Ikea's Dirigera gateway.
 
+<img src="dirigera.gif" width="600" height="338" />  
+
 ## How to start
 
 Clone this repository into your Max Packages folder.

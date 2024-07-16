@@ -1,0 +1,4 @@
+{
+  "ip": "your gateway ip adress",
+  "auth_key": "your gateway access token"
+}

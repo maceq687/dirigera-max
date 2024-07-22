@@ -1,8 +1,8 @@
-//////////////////////////////
+///////////////////////////////////////////
 // Made by Maciek Odrowaz
 // https://maciekodro.com
-// https://github.com/maceq687
-//////////////////////////////
+// https://github.com/maceq687/dirigera-max
+///////////////////////////////////////////
 const Max = require("max-api");
 const https = require("https");
 const config = require("./dirigera_config.json");
@@ -71,29 +71,48 @@ Max.addHandler("lightCapabilities", async (lightCustomName) => {
   }
 });
 
-Max.addHandler("lightControl", async (lightCustomName, controlParam, value) => {
-  if (controlParam === "isOn") {
-    value = value === 1;
-  }
-  const lightId = lightsDict[lightCustomName];
-  if (lightId == undefined) {
-    lightIdUndefined(lightCustomName);
-  } else {
-    const controlData = JSON.stringify([
-      {
-        attributes: { [controlParam]: value },
-      },
-    ]);
-    await controlDevice(lightId, controlData);
-  }
-});
-
 Max.addHandler(
-  "lightSetColor",
-  async (lightCustomName, hueValue, saturationValue) => {
+  "lightControl",
+  async (lightCustomName, controlParam, value, transitionTime) => {
+    if (controlParam === "isOn") {
+      value = value === 1;
+    }
     const lightId = lightsDict[lightCustomName];
     if (lightId == undefined) {
       lightIdUndefined(lightCustomName);
+    } else if (transitionTime) {
+      const controlData = JSON.stringify([
+        {
+          attributes: { [controlParam]: value },
+          transitionTime: transitionTime,
+        },
+      ]);
+      await controlDevice(lightId, controlData);
+    } else {
+      const controlData = JSON.stringify([
+        {
+          attributes: { [controlParam]: value },
+        },
+      ]);
+      await controlDevice(lightId, controlData);
+    }
+  }
+);
+
+Max.addHandler(
+  "lightSetColor",
+  async (lightCustomName, hueValue, saturationValue, transitionTime) => {
+    const lightId = lightsDict[lightCustomName];
+    if (lightId == undefined) {
+      lightIdUndefined(lightCustomName);
+    } else if (transitionTime) {
+      const controlData = JSON.stringify([
+        {
+          attributes: { colorHue: hueValue, colorSaturation: saturationValue },
+          transitionTime: transitionTime,
+        },
+      ]);
+      await controlDevice(lightId, controlData);
     } else {
       const controlData = JSON.stringify([
         {

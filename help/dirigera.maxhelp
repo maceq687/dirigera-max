@@ -41,6 +41,56 @@
 		"boxes" : [ 			{
 				"box" : 				{
 					"bubble" : 1,
+					"id" : "obj-6",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 1173.0, 260.0, 170.0, 38.0 ],
+					"text" : "Optional, set the transition time (in milliseconds)"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-42",
+					"maxclass" : "number",
+					"minimum" : 1,
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "bang" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 1120.0, 268.0, 50.0, 22.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-38",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 1120.0, 299.0, 41.0, 22.0 ],
+					"text" : "set $1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-24",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 596.0, 339.0, 49.0, 22.0 ],
+					"text" : "append"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bubble" : 1,
 					"id" : "obj-53",
 					"linecount" : 3,
 					"maxclass" : "comment",
@@ -72,7 +122,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1260.5, 166.0, 125.0, 38.0 ],
+					"patching_rect" : [ 1260.0, 126.0, 125.0, 38.0 ],
 					"text" : "Set the light color saturation (0-1)"
 				}
 
@@ -85,7 +135,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1044.5, 93.0, 130.0, 39.0 ],
+					"patching_rect" : [ 1044.0, 53.0, 130.0, 39.0 ],
 					"text" : "Set the light color hue"
 				}
 
@@ -98,7 +148,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 844.5, 117.0, 122.0, 52.0 ],
+					"patching_rect" : [ 844.0, 77.0, 122.0, 52.0 ],
 					"text" : "Set the light color temperature (2202-4000)"
 				}
 
@@ -111,7 +161,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 702.5, 124.0, 99.0, 38.0 ],
+					"patching_rect" : [ 702.0, 84.0, 99.0, 38.0 ],
 					"text" : "Set the light level (1-100)"
 				}
 
@@ -124,7 +174,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 497.5, 124.0, 125.0, 39.0 ],
+					"patching_rect" : [ 497.0, 84.0, 125.0, 39.0 ],
 					"text" : "Toggle the light on/off"
 				}
 
@@ -137,7 +187,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 372.5, 186.0, 126.0, 38.0 ],
+					"patching_rect" : [ 372.0, 159.0, 126.0, 38.0 ],
 					"text" : "Choose the light you want to control"
 				}
 
@@ -198,8 +248,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1203.0, 561.0, 172.0, 48.0 ],
-					"text" : "Made by Maciek Odrowaz\nhttps://maciekodro.com\nhttps://github.com/maceq687"
+					"patching_rect" : [ 1139.0, 561.0, 236.0, 48.0 ],
+					"text" : "Made by Maciek Odrowaz\nhttps://maciekodro.com\nhttps://github.com/maceq687/dirigera-max"
 				}
 
 			}
@@ -222,7 +272,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 895.5, 308.0, 103.0, 22.0 ],
+					"patching_rect" : [ 895.0, 268.0, 103.0, 22.0 ],
 					"text" : "join 2 @triggers 1"
 				}
 
@@ -234,7 +284,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 895.5, 339.0, 125.0, 22.0 ],
+					"patching_rect" : [ 895.0, 299.0, 125.0, 22.0 ],
 					"text" : "prepend lightSetColor"
 				}
 
@@ -2087,7 +2137,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 979.5, 274.0, 63.0, 22.0 ],
+					"patching_rect" : [ 979.0, 234.0, 63.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -2121,7 +2171,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 1238.5, 115.0, 20.0, 140.0 ],
+					"patching_rect" : [ 1238.0, 75.0, 20.0, 140.0 ],
 					"size" : 1.0
 				}
 
@@ -2285,7 +2335,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "float" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 1001.5, 134.0, 217.0, 121.0 ],
+					"patching_rect" : [ 1001.0, 94.0, 217.0, 121.0 ],
 					"saturation" : 1.0
 				}
 
@@ -2323,7 +2373,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 822.5, 233.0, 119.0, 22.0 ],
+					"patching_rect" : [ 822.0, 193.0, 119.0, 22.0 ],
 					"text" : "colorTemperature $1"
 				}
 
@@ -2337,7 +2387,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 822.5, 73.0, 20.0, 140.0 ],
+					"patching_rect" : [ 822.0, 33.0, 20.0, 140.0 ],
 					"size" : 1799.0
 				}
 
@@ -2621,7 +2671,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 680.5, 73.0, 20.0, 140.0 ],
+					"patching_rect" : [ 680.0, 33.0, 20.0, 140.0 ],
 					"size" : 99.0
 				}
 
@@ -2633,7 +2683,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 680.5, 233.0, 76.0, 22.0 ],
+					"patching_rect" : [ 680.0, 193.0, 76.0, 22.0 ],
 					"text" : "lightLevel $1"
 				}
 
@@ -2646,7 +2696,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 548.5, 165.0, 24.0, 24.0 ]
+					"patching_rect" : [ 548.0, 125.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -2657,7 +2707,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 596.5, 308.0, 103.0, 22.0 ],
+					"patching_rect" : [ 596.0, 268.0, 103.0, 22.0 ],
 					"text" : "join 2 @triggers 1"
 				}
 
@@ -2669,7 +2719,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 548.5, 233.0, 50.0, 22.0 ],
+					"patching_rect" : [ 548.0, 193.0, 50.0, 22.0 ],
 					"text" : "isOn $1"
 				}
 
@@ -2681,7 +2731,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 596.5, 339.0, 117.0, 22.0 ],
+					"patching_rect" : [ 596.0, 299.0, 117.0, 22.0 ],
 					"text" : "prepend lightControl"
 				}
 
@@ -2693,7 +2743,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 311.0, 261.0, 57.0, 22.0 ],
+					"patching_rect" : [ 311.0, 234.0, 57.0, 22.0 ],
 					"text" : "tosymbol"
 				}
 
@@ -2731,7 +2781,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "int", "", "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 270.5, 194.0, 100.0, 22.0 ]
+					"patching_rect" : [ 270.0, 167.0, 100.0, 22.0 ]
 				}
 
 			}
@@ -2785,7 +2835,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 550.5, 102.0, 20.0, 20.0 ],
+					"patching_rect" : [ 550.0, 62.0, 20.0, 20.0 ],
 					"rounded" : 60.0,
 					"text" : "3",
 					"textcolor" : [ 0.34902, 0.34902, 0.34902, 1.0 ]
@@ -2806,7 +2856,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 421.0, 164.0, 20.0, 20.0 ],
+					"patching_rect" : [ 420.0, 137.0, 20.0, 20.0 ],
 					"rounded" : 60.0,
 					"text" : "2",
 					"textcolor" : [ 0.34902, 0.34902, 0.34902, 1.0 ]
@@ -2882,7 +2932,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-26", 0 ],
+					"destination" : [ "obj-24", 0 ],
 					"source" : [ "obj-14", 0 ]
 				}
 
@@ -2944,6 +2994,13 @@
 					"destination" : [ "obj-12", 0 ],
 					"hidden" : 1,
 					"source" : [ "obj-23", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-26", 0 ],
+					"source" : [ "obj-24", 0 ]
 				}
 
 			}
@@ -3024,6 +3081,20 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-24", 0 ],
+					"source" : [ "obj-38", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-38", 0 ],
+					"source" : [ "obj-42", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-46", 0 ],
 					"source" : [ "obj-43", 0 ]
 				}
@@ -3076,7 +3147,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-26", 0 ],
+					"destination" : [ "obj-24", 0 ],
 					"source" : [ "obj-7", 0 ]
 				}
 

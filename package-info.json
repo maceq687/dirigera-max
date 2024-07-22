@@ -1,0 +1,28 @@
+{
+  "name": "Dirigera Max",
+  "displayname": "",
+  "version": "1.0.0",
+  "author": "Maciek Odrowaz",
+  "authors": [],
+  "description": "External for controlling smart lights connected to the Ikea's Dirigera gateway",
+  "tags": ["lighting control"],
+  "website": "https://github.com/maceq687/dirigera-max",
+  "extends": "",
+  "extensible": 0,
+  "max_version_min": "8.0",
+  "max_version_max": "none",
+  "os": {
+    "macintosh": {
+      "min_version": "none",
+      "platform": ["x64", "aarch64"]
+    },
+    "windows": {
+      "min_version": "none",
+      "platform": ["x64"]
+    }
+  },
+  "homepatcher": "dirigera.maxhelp",
+  "package_extra": {
+    "forcerestart": 1
+  }
+}

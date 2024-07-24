@@ -69,7 +69,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "" ],
-					"patching_rect" : [ 319.0, 236.0, 71.0, 22.0 ],
+					"patching_rect" : [ 342.5, 240.0, 71.0, 22.0 ],
 					"text" : "sel success"
 				}
 
@@ -153,8 +153,8 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 269.0, 253.0, 32.0, 22.0 ],
-					"text" : "print"
+					"patching_rect" : [ 269.0, 277.0, 75.0, 22.0 ],
+					"text" : "print dirigera"
 				}
 
 			}
@@ -165,7 +165,7 @@
 					"numinlets" : 3,
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
-					"patching_rect" : [ 269.0, 203.0, 118.0, 22.0 ],
+					"patching_rect" : [ 269.0, 203.0, 166.0, 22.0 ],
 					"text" : "route stdout loadend"
 				}
 
@@ -193,8 +193,6 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 0,
 						"defer" : 0,
-						"node_bin_path" : "",
-						"npm_bin_path" : "",
 						"watch" : 0
 					}
 ,

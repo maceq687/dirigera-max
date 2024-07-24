@@ -28,7 +28,7 @@ function parseConfig() {
   } catch (err) {
     var message =
       "Encountered problem with config file, check if it is in the correct directory and formatted correctly";
-    console.log(message);
+    Max.post(message);
   }
   globalOptions.host = ip;
   globalOptions.headers.Authorization =
@@ -200,7 +200,7 @@ function lightIdUndefined(lightCustomName) {
     "No light with name: " +
     lightCustomName +
     ", try listLights first and then retry";
-  console.log(message);
+  Max.post(message);
 }
 
 parseConfig();

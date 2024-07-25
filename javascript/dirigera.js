@@ -5,7 +5,6 @@
 ///////////////////////////////////////////
 const Max = require("max-api");
 const https = require("https");
-const config = require("./dirigera_config.json");
 
 var globalOptions = {
   host: "",
@@ -23,12 +22,17 @@ function parseConfig() {
   var ip;
   var auth_key;
   try {
+    const config = require("./dirigera_config.json");
     ip = config.ip;
     auth_key = config.auth_key;
-  } catch (err) {
-    var message =
-      "Encountered problem with config file, check if it is in the correct directory and formatted correctly";
-    Max.post(message);
+  } catch (error) {
+    if (error.code == "MODULE_NOT_FOUND") {
+      Max.post("Missing config file");
+    } else {
+      Max.post(
+        "Encountered problem with config file: " + JSON.stringify(error)
+      );
+    }
   }
   globalOptions.host = ip;
   globalOptions.headers.Authorization =
@@ -163,7 +167,13 @@ async function controlDevice(deviceId, controlData) {
 function httpRequest(requestOptions, requestData) {
   return new Promise((resolve, reject) => {
     const req = https.request(requestOptions, (res) => {
-      if (res.statusCode < 200 || res.statusCode >= 300) {
+      if (res.statusCode == 401) {
+        Max.post(
+          "Unauthorized access error. Make sure that the auth_key is correct"
+        );
+        return reject(new Error("Unauthorized access"));
+      } else if (res.statusCode < 200 || res.statusCode >= 300) {
+        Max.post("Error, gateway responded with code " + res.statusCode);
         return reject(new Error("statusCode = " + res.statusCode));
       }
       if (requestData) {
@@ -185,8 +195,19 @@ function httpRequest(requestOptions, requestData) {
         });
       }
     });
-    req.on("error", (e) => {
-      reject(e.message);
+    req.on("error", (error) => {
+      if (error.code == "ETIMEDOUT") {
+        Max.post(
+          "Request timeout. Make sure that the gateway's IP address is correct and gateway is reachable"
+        );
+      } else if (error.code == "ENOTFOUND") {
+        Max.post(
+          "Gateway not found. Make sure that the gateway's IP address is correct and gateway is reachable"
+        );
+      } else {
+        Max.post("Request error: " + JSON.stringify(error));
+      }
+      reject(error);
     });
     if (requestData) {
       req.write(requestData);
@@ -196,11 +217,11 @@ function httpRequest(requestOptions, requestData) {
 }
 
 function lightIdUndefined(lightCustomName) {
-  var message =
+  Max.post(
     "No light with name: " +
-    lightCustomName +
-    ", try listLights first and then retry";
-  Max.post(message);
+      lightCustomName +
+      ", try listLights first and then retry"
+  );
 }
 
 parseConfig();

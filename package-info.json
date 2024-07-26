@@ -1,7 +1,7 @@
 {
   "name": "Dirigera Max",
   "displayname": "",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "Maciek Odrowaz",
   "authors": [],
   "description": "External for controlling smart lights connected to the Ikea's Dirigera gateway",

@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 6,
-			"revision" : 3,
+			"revision" : 4,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 1223.0, 405.0, 494.0, 378.0 ],
+		"rect" : [ 283.0, 568.0, 577.0, 378.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -40,13 +40,73 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"comment" : "List of the available light sets",
+					"id" : "obj-6",
+					"index" : 0,
+					"maxclass" : "outlet",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 206.0, 304.0, 30.0, 30.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"comment" : "Light capabilities and their current state",
+					"id" : "obj-3",
+					"index" : 0,
+					"maxclass" : "outlet",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 144.0, 304.0, 30.0, 30.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-28",
+					"maxclass" : "newobj",
+					"numinlets" : 4,
+					"numoutlets" : 4,
+					"outlettype" : [ "", "", "", "" ],
+					"patching_rect" : [ 82.0, 253.0, 205.0, 22.0 ],
+					"text" : "route lightsList light lightSetsList"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-5",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 2,
+					"outlettype" : [ "bang", "" ],
+					"patching_rect" : [ 388.0, 240.0, 71.0, 22.0 ],
+					"text" : "sel success"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-2",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 154.0, 92.0, 55.0, 22.0 ],
+					"text" : "listLights"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-25",
 					"linecount" : 3,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 307.0, 312.0, 172.0, 48.0 ],
-					"text" : "Made by Maciek Odrowaz\nhttps://maciekodro.com\nhttps://github.com/maceq687"
+					"patching_rect" : [ 318.0, 312.0, 234.0, 48.0 ],
+					"text" : "Made by Maciek Odrowaz\nhttps://maciekodro.com\nhttps://github.com/maceq687/dirigera-max"
 				}
 
 			}
@@ -57,7 +117,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 145.0, 100.0, 64.0, 22.0 ],
+					"patching_rect" : [ 254.0, 92.0, 64.0, 22.0 ],
 					"text" : "script start"
 				}
 
@@ -69,7 +129,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 145.0, 53.0, 58.0, 22.0 ],
+					"patching_rect" : [ 254.0, 53.0, 58.0, 22.0 ],
 					"text" : "loadbang"
 				}
 
@@ -89,13 +149,13 @@
 			}
 , 			{
 				"box" : 				{
-					"comment" : "",
+					"comment" : "List of the available lights",
 					"id" : "obj-20",
 					"index" : 0,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 82.0, 253.0, 30.0, 30.0 ]
+					"patching_rect" : [ 82.0, 304.0, 30.0, 30.0 ]
 				}
 
 			}
@@ -105,8 +165,8 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 227.0, 253.0, 32.0, 22.0 ],
-					"text" : "print"
+					"patching_rect" : [ 314.0, 277.0, 75.0, 22.0 ],
+					"text" : "print dirigera"
 				}
 
 			}
@@ -114,11 +174,11 @@
 				"box" : 				{
 					"id" : "obj-45",
 					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 227.0, 203.0, 72.0, 22.0 ],
-					"text" : "route stdout"
+					"numinlets" : 3,
+					"numoutlets" : 3,
+					"outlettype" : [ "", "", "" ],
+					"patching_rect" : [ 314.0, 203.0, 166.0, 22.0 ],
+					"text" : "route stdout loadend"
 				}
 
 			}
@@ -141,7 +201,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 82.0, 157.0, 164.0, 22.0 ],
+					"patching_rect" : [ 82.0, 157.0, 251.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"autostart" : 0,
 						"defer" : 0,
@@ -164,7 +224,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-20", 0 ],
+					"destination" : [ "obj-28", 0 ],
 					"source" : [ "obj-16", 0 ]
 				}
 
@@ -172,7 +232,35 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-8", 0 ],
+					"source" : [ "obj-2", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-8", 0 ],
 					"source" : [ "obj-21", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-20", 0 ],
+					"source" : [ "obj-28", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 0 ],
+					"source" : [ "obj-28", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-6", 0 ],
+					"source" : [ "obj-28", 2 ]
 				}
 
 			}
@@ -187,6 +275,20 @@
 				"patchline" : 				{
 					"destination" : [ "obj-24", 0 ],
 					"source" : [ "obj-45", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 0 ],
+					"source" : [ "obj-45", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-2", 0 ],
+					"source" : [ "obj-5", 0 ]
 				}
 
 			}

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+<c74object name="dirigera">
+
+	<digest>
+		Control smart lights connected to the Dirigera gateway
+	</digest>
+	
+	<description>
+		Control smart lights over local network connected to the Ikea's Dirigera gateway.
+	</description>
+	
+	<!--METADATA-->
+	<metadatalist>
+		<metadata name="author">Maciek Odrowaz</metadata>
+		<metadata name="tag">Control</metadata>
+		<metadata name="tag">Light</metadata>
+		<metadata name="tag">Automation</metadata>
+	</metadatalist>
+	
+	<!--INLETS-->
+	<inletlist>
+		<inlet id="0" type="list">
+			<digest>Command or list with a control paramerter.</digest>
+		</inlet>
+	</inletlist>
+
+	<!--OUTLETS-->
+	<outletlist>
+		<outlet id="0" type="list">
+			<digest>List of the available lights.</digest>
+		</outlet>
+		<outlet id="1" type="list">
+			<digest>Light capabilities and their current state.</digest>
+		</outlet>
+		<outlet id="2" type="list">
+			<digest>List of available light sets.</digest>
+		</outlet>
+	</outletlist>
+	
+	<!--MESSAGES-->
+	<methodlist>
+		<method name="listLights">
+			<arglist />
+			<digest>
+				Outputs information about all connected lights
+			</digest>
+			<description>
+				Retrieves a list of all lights connecte to the gateway. Outputs the result for singular lights through the first outlet, in the format for umenu object. Light sets are outputted through the third outlet, in the formt for umenu object.
+			</description>
+		</method>
+		<method name="dump">
+			<arglist />
+			<digest>
+				Post information about all connected devices to Max console
+			</digest>
+			<description>
+				Retrieves information about all devices connected to the gateway. Post the result in Max console.
+			</description>
+		</method>
+		<method name="list">
+			<arglist />
+			<digest>
+				Sends control parameter to a speciffic light or light set.
+			</digest>
+			<description>
+				Sends control paramerter to a selected light or a light set. Message should consist of a list of: control parameter type, name of the light or light set, the control parameter name, parameter value and optionally a transition time.
+			</description>
+		</method>
+	</methodlist>
+	
+</c74object>

@@ -52,6 +52,17 @@ Max.addHandler("listLights", async () => {
   for (let i = 0; i < lights.length; i++) {
     lightsDict[lights[i].attributes.customName] = lights[i].id;
     Max.outlet("lightsList append " + lights[i].attributes.customName);
+    if (lights[i].deviceSet.length > 0) {
+      lightsDict[lights[i].deviceSet[0].name] =
+        "set/" + lights[i].deviceSet[0].id;
+    }
+  }
+  Max.outlet("lightSetsList clear");
+  for (let i = 0; i < Object.keys(lightsDict).length; i++) {
+    const lightId = lightsDict[Object.keys(lightsDict)[i]];
+    if (lightId.startsWith("set/")) {
+      Max.outlet("lightSetsList append " + Object.keys(lightsDict)[i]);
+    }
   }
 });
 
@@ -59,6 +70,8 @@ Max.addHandler("lightCapabilities", async (lightCustomName) => {
   const lightId = lightsDict[lightCustomName];
   if (lightId == undefined) {
     lightIdUndefined(lightCustomName);
+  } else if (lightId.startsWith("set/")) {
+    Max.post("Light sets don't have defined capabilities");
   } else {
     const lightCapabilitiesDict = await getDevices(
       "lightCapabilities",

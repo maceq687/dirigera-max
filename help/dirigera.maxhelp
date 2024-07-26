@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 272.0, 349.0, 1431.0, 660.0 ],
+		"rect" : [ 274.0, 519.0, 1431.0, 660.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -41,12 +41,51 @@
 		"boxes" : [ 			{
 				"box" : 				{
 					"bubble" : 1,
+					"bubbleside" : 2,
+					"id" : "obj-20",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 384.5, 164.0, 134.0, 53.0 ],
+					"text" : "Or choose the light set you want to control"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-4",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 441.0, 260.0, 57.0, 22.0 ],
+					"text" : "tosymbol"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-16",
+					"items" : "<empty>",
+					"maxclass" : "umenu",
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"outlettype" : [ "int", "", "" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 400.5, 219.0, 100.0, 22.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bubble" : 1,
 					"id" : "obj-6",
 					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1189.0, 286.0, 170.0, 38.0 ],
+					"patching_rect" : [ 1186.0, 286.0, 170.0, 38.0 ],
 					"text" : "Optional, set the transition time (in milliseconds)"
 				}
 
@@ -55,12 +94,12 @@
 				"box" : 				{
 					"id" : "obj-42",
 					"maxclass" : "number",
-					"minimum" : 1,
+					"minimum" : 100,
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 1136.0, 294.0, 50.0, 22.0 ]
+					"patching_rect" : [ 1133.0, 294.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -71,7 +110,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 1136.0, 325.0, 41.0, 22.0 ],
+					"patching_rect" : [ 1133.0, 325.0, 41.0, 22.0 ],
 					"text" : "set $1"
 				}
 
@@ -96,7 +135,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 492.0, 518.0, 190.0, 52.0 ],
+					"patching_rect" : [ 477.0, 518.0, 190.0, 52.0 ],
 					"text" : "Go into edit mode to see how these objects are routed to set state of the light controls"
 				}
 
@@ -109,8 +148,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1276.0, 152.0, 125.0, 38.0 ],
-					"text" : "Set the light color saturation (0-1)"
+					"patching_rect" : [ 1273.0, 152.0, 125.0, 38.0 ],
+					"text" : "Set the light color saturation (0.-1.)"
 				}
 
 			}
@@ -122,7 +161,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1060.0, 79.0, 130.0, 39.0 ],
+					"patching_rect" : [ 1057.0, 79.0, 130.0, 39.0 ],
 					"text" : "Set the light color hue"
 				}
 
@@ -161,7 +200,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 513.0, 110.0, 125.0, 39.0 ],
+					"patching_rect" : [ 544.0, 127.5, 125.0, 39.0 ],
 					"text" : "Toggle the light on/off"
 				}
 
@@ -169,12 +208,13 @@
 , 			{
 				"box" : 				{
 					"bubble" : 1,
+					"bubbleside" : 2,
 					"id" : "obj-32",
 					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 388.0, 185.0, 126.0, 38.0 ],
+					"patching_rect" : [ 256.5, 164.0, 126.0, 53.0 ],
 					"text" : "Choose the light you want to control"
 				}
 
@@ -182,24 +222,26 @@
 , 			{
 				"box" : 				{
 					"bubble" : 1,
+					"bubbleside" : 2,
 					"id" : "obj-29",
-					"linecount" : 3,
+					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 128.0, 350.0, 160.0, 52.0 ],
-					"text" : "List all devices connected to the Drigera gateway in max console"
+					"patching_rect" : [ 74.5, 274.0, 164.0, 53.0 ],
+					"text" : "List all devices connected to the gateway in max console"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"bubble" : 1,
+					"bubbleside" : 2,
 					"id" : "obj-22",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 101.0, 219.0, 147.0, 24.0 ],
+					"patching_rect" : [ 45.0, 178.0, 128.0, 39.0 ],
 					"text" : "List all available lights"
 				}
 
@@ -235,7 +277,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1165.0, 561.0, 236.0, 48.0 ],
+					"patching_rect" : [ 1162.0, 561.0, 236.0, 48.0 ],
 					"text" : "Made by Maciek Odrowaz\nhttps://maciekodro.com\nhttps://github.com/maceq687/dirigera-max"
 				}
 
@@ -247,7 +289,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 327.0, 419.0, 80.0, 22.0 ],
+					"patching_rect" : [ 310.0, 409.0, 80.0, 22.0 ],
 					"text" : "speedlim 100"
 				}
 
@@ -259,7 +301,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 911.0, 294.0, 103.0, 22.0 ],
+					"patching_rect" : [ 908.0, 294.0, 103.0, 22.0 ],
 					"text" : "join 2 @triggers 1"
 				}
 
@@ -271,7 +313,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 911.0, 325.0, 125.0, 22.0 ],
+					"patching_rect" : [ 908.0, 325.0, 125.0, 22.0 ],
 					"text" : "prepend lightSetColor"
 				}
 
@@ -2124,7 +2166,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 995.0, 260.0, 63.0, 22.0 ],
+					"patching_rect" : [ 992.0, 260.0, 63.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -2144,7 +2186,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 239.0, 587.0, 41.0, 22.0 ],
+					"patching_rect" : [ 224.0, 587.0, 41.0, 22.0 ],
 					"text" : "set $1"
 				}
 
@@ -2158,7 +2200,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 1254.0, 101.0, 20.0, 140.0 ],
+					"patching_rect" : [ 1251.0, 101.0, 20.0, 140.0 ],
 					"size" : 1.0
 				}
 
@@ -2302,7 +2344,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 413.0, 533.0, 68.0, 22.0 ],
+					"patching_rect" : [ 398.0, 533.0, 68.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -2322,7 +2364,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "float" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 1017.0, 120.0, 217.0, 121.0 ],
+					"patching_rect" : [ 1014.0, 120.0, 217.0, 121.0 ],
 					"saturation" : 1.0
 				}
 
@@ -2335,7 +2377,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 178.0, 587.0, 41.0, 22.0 ],
+					"patching_rect" : [ 163.0, 587.0, 41.0, 22.0 ],
 					"text" : "set $1"
 				}
 
@@ -2348,7 +2390,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 117.0, 587.0, 41.0, 22.0 ],
+					"patching_rect" : [ 102.0, 587.0, 41.0, 22.0 ],
 					"text" : "set $1"
 				}
 
@@ -2625,7 +2667,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 329.0, 533.0, 74.0, 22.0 ],
+					"patching_rect" : [ 314.0, 533.0, 74.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -2644,7 +2686,7 @@
 					"numinlets" : 4,
 					"numoutlets" : 4,
 					"outlettype" : [ "", "", "", "" ],
-					"patching_rect" : [ 117.0, 533.0, 202.0, 22.0 ],
+					"patching_rect" : [ 102.0, 533.0, 202.0, 22.0 ],
 					"text" : "route isOn lightLevel colorSaturation"
 				}
 
@@ -2683,7 +2725,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 564.0, 151.0, 24.0, 24.0 ]
+					"patching_rect" : [ 595.0, 168.5, 24.0, 24.0 ]
 				}
 
 			}
@@ -2706,7 +2748,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 564.0, 219.0, 50.0, 22.0 ],
+					"patching_rect" : [ 595.0, 219.0, 50.0, 22.0 ],
 					"text" : "isOn $1"
 				}
 
@@ -2730,7 +2772,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 327.0, 260.0, 57.0, 22.0 ],
+					"patching_rect" : [ 310.0, 260.0, 57.0, 22.0 ],
 					"text" : "tosymbol"
 				}
 
@@ -2742,7 +2784,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 327.0, 365.0, 140.0, 22.0 ],
+					"patching_rect" : [ 310.0, 325.0, 140.0, 22.0 ],
 					"text" : "prepend lightCapabilities"
 				}
 
@@ -2756,7 +2798,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "int", "", "" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 286.0, 193.0, 100.0, 22.0 ]
+					"patching_rect" : [ 269.5, 219.0, 100.0, 22.0 ]
 				}
 
 			}
@@ -2767,7 +2809,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 87.0, 365.0, 39.0, 22.0 ],
+					"patching_rect" : [ 137.0, 329.0, 39.0, 22.0 ],
 					"text" : "dump"
 				}
 
@@ -2779,7 +2821,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 44.0, 220.0, 55.0, 22.0 ],
+					"patching_rect" : [ 81.0, 219.0, 55.0, 22.0 ],
 					"text" : "listLights"
 				}
 
@@ -2789,8 +2831,8 @@
 					"id" : "obj-8",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "" ],
+					"numoutlets" : 3,
+					"outlettype" : [ "", "", "" ],
 					"patching_rect" : [ 87.0, 453.0, 49.0, 22.0 ],
 					"text" : "dirigera"
 				}
@@ -2810,7 +2852,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 566.0, 88.0, 20.0, 20.0 ],
+					"patching_rect" : [ 597.0, 105.5, 20.0, 20.0 ],
 					"rounded" : 60.0,
 					"text" : "3",
 					"textcolor" : [ 0.34902, 0.34902, 0.34902, 1.0 ]
@@ -2831,7 +2873,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 436.0, 163.0, 20.0, 20.0 ],
+					"patching_rect" : [ 304.5, 142.0, 20.0, 20.0 ],
 					"rounded" : 60.0,
 					"text" : "2",
 					"textcolor" : [ 0.34902, 0.34902, 0.34902, 1.0 ]
@@ -2852,7 +2894,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 165.0, 197.0, 20.0, 20.0 ],
+					"patching_rect" : [ 99.0, 156.0, 20.0, 20.0 ],
 					"rounded" : 60.0,
 					"text" : "1",
 					"textcolor" : [ 0.34902, 0.34902, 0.34902, 1.0 ]
@@ -2916,6 +2958,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-9", 0 ],
 					"source" : [ "obj-15", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-4", 0 ],
+					"source" : [ "obj-16", 1 ]
 				}
 
 			}
@@ -3024,6 +3073,22 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-11", 0 ],
+					"order" : 0,
+					"source" : [ "obj-4", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-21", 0 ],
+					"order" : 1,
+					"source" : [ "obj-4", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-38", 0 ],
 					"source" : [ "obj-42", 0 ]
 				}
@@ -3092,6 +3157,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-13", 0 ],
 					"source" : [ "obj-8", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-16", 0 ],
+					"source" : [ "obj-8", 2 ]
 				}
 
 			}

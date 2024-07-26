@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 283.0, 568.0, 494.0, 378.0 ],
+		"rect" : [ 283.0, 568.0, 577.0, 378.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -40,13 +40,25 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"comment" : "List of the available light sets",
+					"id" : "obj-6",
+					"index" : 0,
+					"maxclass" : "outlet",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 206.0, 304.0, 30.0, 30.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"comment" : "Light capabilities and their current state",
 					"id" : "obj-3",
 					"index" : 0,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 147.5, 304.0, 30.0, 30.0 ]
+					"patching_rect" : [ 144.0, 304.0, 30.0, 30.0 ]
 				}
 
 			}
@@ -54,11 +66,11 @@
 				"box" : 				{
 					"id" : "obj-28",
 					"maxclass" : "newobj",
-					"numinlets" : 3,
-					"numoutlets" : 3,
-					"outlettype" : [ "", "", "" ],
-					"patching_rect" : [ 82.0, 253.0, 150.0, 22.0 ],
-					"text" : "route lightsList light"
+					"numinlets" : 4,
+					"numoutlets" : 4,
+					"outlettype" : [ "", "", "", "" ],
+					"patching_rect" : [ 82.0, 253.0, 205.0, 22.0 ],
+					"text" : "route lightsList light lightSetsList"
 				}
 
 			}
@@ -69,7 +81,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "" ],
-					"patching_rect" : [ 342.5, 240.0, 71.0, 22.0 ],
+					"patching_rect" : [ 388.0, 240.0, 71.0, 22.0 ],
 					"text" : "sel success"
 				}
 
@@ -93,7 +105,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 245.0, 312.0, 234.0, 48.0 ],
+					"patching_rect" : [ 318.0, 312.0, 234.0, 48.0 ],
 					"text" : "Made by Maciek Odrowaz\nhttps://maciekodro.com\nhttps://github.com/maceq687/dirigera-max"
 				}
 
@@ -153,7 +165,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 269.0, 277.0, 75.0, 22.0 ],
+					"patching_rect" : [ 314.0, 277.0, 75.0, 22.0 ],
 					"text" : "print dirigera"
 				}
 
@@ -165,7 +177,7 @@
 					"numinlets" : 3,
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "" ],
-					"patching_rect" : [ 269.0, 203.0, 166.0, 22.0 ],
+					"patching_rect" : [ 314.0, 203.0, 166.0, 22.0 ],
 					"text" : "route stdout loadend"
 				}
 
@@ -189,10 +201,12 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 82.0, 157.0, 206.0, 22.0 ],
+					"patching_rect" : [ 82.0, 157.0, 251.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"autostart" : 0,
 						"defer" : 0,
+						"node_bin_path" : "",
+						"npm_bin_path" : "",
 						"watch" : 0
 					}
 ,
@@ -240,6 +254,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-3", 0 ],
 					"source" : [ "obj-28", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-6", 0 ],
+					"source" : [ "obj-28", 2 ]
 				}
 
 			}

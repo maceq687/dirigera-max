@@ -6,7 +6,7 @@
 const Max = require("max-api");
 const https = require("https");
 
-var globalOptions = {
+const globalOptions = {
   host: "",
   port: 8443,
   path: "/v1/devices",
@@ -16,139 +16,139 @@ var globalOptions = {
   rejectUnauthorized: false,
 };
 
-var lightsDict = {};
+const lightsDict = {};
 
 function parseConfig() {
-  var ip;
-  var auth_key;
   try {
     const config = require("./dirigera_config.json");
-    ip = config.ip;
-    auth_key = config.auth_key;
+    globalOptions.host = config.ip;
+    globalOptions.headers.Authorization =
+      globalOptions.headers.Authorization + config.auth_key;
   } catch (error) {
     if (error.code == "MODULE_NOT_FOUND") {
-      Max.post("Missing config file");
-    } else {
-      Max.post(
-        "Encountered problem with config file: " + JSON.stringify(error)
-      );
+      return Max.post("Missing config file");
     }
+    Max.post("Encountered problem with config file: " + JSON.stringify(error));
   }
-  globalOptions.host = ip;
-  globalOptions.headers.Authorization =
-    globalOptions.headers.Authorization + auth_key;
 }
 
 Max.addHandler("dump", async () => {
-  var devices = await getDevices();
+  const devices = await getDevices();
+  if (devices == undefined) {
+    return Max.post("Encountered error when tried to dump");
+  }
   for (let i = 0; i < devices.length; i++) {
     Max.post(JSON.stringify(devices[i]));
   }
 });
 
 Max.addHandler("listLights", async () => {
-  var lights = await getDevices("lights");
+  const lights = await getDevices("lights");
+  if (lights == undefined) {
+    return Max.post("Encountered error when tried to listLights");
+  }
   Max.outlet("lightsList clear");
-  for (let i = 0; i < lights.length; i++) {
-    lightsDict[lights[i].attributes.customName] = lights[i].id;
-    Max.outlet("lightsList append " + lights[i].attributes.customName);
-    if (lights[i].deviceSet.length > 0) {
-      lightsDict[lights[i].deviceSet[0].name] =
-        "set/" + lights[i].deviceSet[0].id;
+  lights.forEach((light) => {
+    lightsDict[light.attributes.customName] = light.id;
+    Max.outlet("lightsList append " + light.attributes.customName);
+    if (light.deviceSet.length > 0) {
+      lightsDict[light.deviceSet[0].name] = "set/" + light.deviceSet[0].id;
     }
-  }
+  });
   Max.outlet("lightSetsList clear");
-  for (let i = 0; i < Object.keys(lightsDict).length; i++) {
-    const lightId = lightsDict[Object.keys(lightsDict)[i]];
+  Object.keys(lightsDict).forEach((key) => {
+    const lightId = lightsDict[key];
     if (lightId.startsWith("set/")) {
-      Max.outlet("lightSetsList append " + Object.keys(lightsDict)[i]);
+      Max.outlet("lightSetsList append " + key);
     }
-  }
+  });
 });
 
 Max.addHandler("lightCapabilities", async (lightCustomName) => {
   const lightId = lightsDict[lightCustomName];
   if (lightId == undefined) {
-    lightIdUndefined(lightCustomName);
-  } else if (lightId.startsWith("set/")) {
-    Max.post("Light sets don't have defined capabilities");
-  } else {
-    const lightCapabilitiesDict = await getDevices(
-      "lightCapabilities",
-      lightId
-    );
-    lightCapabilitiesDict["isOn"] = lightCapabilitiesDict["isOn"] ? 1 : 0;
-    const keys = Object.getOwnPropertyNames(lightCapabilitiesDict);
-    const lightCapabilities = keys.map((key) => [
-      key + " " + String(lightCapabilitiesDict[key]),
-    ]);
-    for (let i = 0; i < lightCapabilities.length; i++) {
-      Max.outlet("light " + lightCapabilities[i]);
-    }
+    return lightIdUndefined(lightCustomName);
+  }
+  if (lightId.startsWith("set/")) {
+    return Max.post("Light sets don't have defined capabilities");
+  }
+  const lightCapabilitiesDict = await getDevices("lightCapabilities", lightId);
+  if (lightCapabilitiesDict == undefined) {
+    return Max.post("Encountered error when tried to get lightCapabilities");
+  }
+  lightCapabilitiesDict["isOn"] = lightCapabilitiesDict["isOn"] ? 1 : 0;
+  const keys = Object.getOwnPropertyNames(lightCapabilitiesDict);
+  const lightCapabilities = keys.map((key) => [
+    key + " " + String(lightCapabilitiesDict[key]),
+  ]);
+  for (let i = 0; i < lightCapabilities.length; i++) {
+    Max.outlet("light " + lightCapabilities[i]);
   }
 });
 
 Max.addHandler(
   "lightControl",
-  async (lightCustomName, controlParam, value, transitionTime) => {
+  (lightCustomName, controlParam, value, transitionTime) => {
     if (controlParam === "isOn") {
       value = value === 1;
     }
     const lightId = lightsDict[lightCustomName];
     if (lightId == undefined) {
-      lightIdUndefined(lightCustomName);
-    } else if (transitionTime) {
+      return lightIdUndefined(lightCustomName);
+    }
+    if (transitionTime) {
       const controlData = JSON.stringify([
         {
           attributes: { [controlParam]: value },
           transitionTime: transitionTime,
         },
       ]);
-      await controlDevice(lightId, controlData);
-    } else {
-      const controlData = JSON.stringify([
-        {
-          attributes: { [controlParam]: value },
-        },
-      ]);
-      await controlDevice(lightId, controlData);
+      return controlDevice(lightId, controlData);
     }
+    const controlData = JSON.stringify([
+      {
+        attributes: { [controlParam]: value },
+      },
+    ]);
+    controlDevice(lightId, controlData);
   }
 );
 
 Max.addHandler(
   "lightSetColor",
-  async (lightCustomName, hueValue, saturationValue, transitionTime) => {
+  (lightCustomName, hueValue, saturationValue, transitionTime) => {
     const lightId = lightsDict[lightCustomName];
     if (lightId == undefined) {
-      lightIdUndefined(lightCustomName);
-    } else if (transitionTime) {
+      return lightIdUndefined(lightCustomName);
+    }
+    if (transitionTime) {
       const controlData = JSON.stringify([
         {
           attributes: { colorHue: hueValue, colorSaturation: saturationValue },
           transitionTime: transitionTime,
         },
       ]);
-      await controlDevice(lightId, controlData);
-    } else {
-      const controlData = JSON.stringify([
-        {
-          attributes: { colorHue: hueValue, colorSaturation: saturationValue },
-        },
-      ]);
-      await controlDevice(lightId, controlData);
+      return controlDevice(lightId, controlData);
     }
+    const controlData = JSON.stringify([
+      {
+        attributes: { colorHue: hueValue, colorSaturation: saturationValue },
+      },
+    ]);
+    controlDevice(lightId, controlData);
   }
 );
 
 async function getDevices(type, deviceId) {
   const devices = await httpRequest(globalOptions);
-  if (!type) {
-    return devices;
-  } else if (type === "lights") {
+  if (devices == undefined) {
+    return;
+  }
+  if (type === "lights") {
     const lights = devices.filter((device) => device.type === "light");
     return lights;
-  } else if (type === "lightCapabilities") {
+  }
+  if (type === "lightCapabilities") {
     const light = devices.find((device) => device.id === deviceId);
     var lightCapabilitiesDict = {};
     var capabilitiesToReceive = light.capabilities.canReceive;
@@ -164,20 +164,20 @@ async function getDevices(type, deviceId) {
     }
     return lightCapabilitiesDict;
   }
+  return devices;
 }
 
-async function controlDevice(deviceId, controlData) {
+function controlDevice(deviceId, controlData) {
   const controlOptions = {
     ...globalOptions,
     path: globalOptions.path + "/" + deviceId,
     headers: { ...globalOptions.headers, "Content-Type": "application/json" },
     method: "PATCH",
   };
-  await httpRequest(controlOptions, controlData);
-  return;
+  httpRequest(controlOptions, controlData);
 }
 
-function httpRequest(requestOptions, requestData) {
+function httpRequest(requestOptions, controlValue) {
   return new Promise((resolve, reject) => {
     const req = https.request(requestOptions, (res) => {
       if (res.statusCode == 401) {
@@ -185,15 +185,12 @@ function httpRequest(requestOptions, requestData) {
           "Unauthorized access error. Make sure that the auth_key is correct"
         );
         return reject(new Error("Unauthorized access"));
-      } else if (res.statusCode < 200 || res.statusCode >= 300) {
+      }
+      if (res.statusCode < 200 || res.statusCode >= 300) {
         Max.post("Error, gateway responded with code " + res.statusCode);
         return reject(new Error("statusCode = " + res.statusCode));
       }
-      if (requestData) {
-        res.on("end", function () {
-          resolve();
-        });
-      } else {
+      if (controlValue == undefined) {
         var body = [];
         res.on("data", function (chunk) {
           body.push(chunk);
@@ -201,29 +198,33 @@ function httpRequest(requestOptions, requestData) {
         res.on("end", function () {
           try {
             body = JSON.parse(Buffer.concat(body).toString());
-          } catch (e) {
-            reject(e);
+          } catch (error) {
+            return reject(new Error(error));
           }
           resolve(body);
+        });
+      } else {
+        res.on("end", function () {
+          resolve();
         });
       }
     });
     req.on("error", (error) => {
       if (error.code == "ETIMEDOUT") {
-        Max.post(
+        return Max.post(
           "Request timeout. Make sure that the gateway's IP address is correct and gateway is reachable"
         );
-      } else if (error.code == "ENOTFOUND") {
-        Max.post(
+      }
+      if (error.code == "ENOTFOUND") {
+        return Max.post(
           "Gateway not found. Make sure that the gateway's IP address is correct and gateway is reachable"
         );
-      } else {
-        Max.post("Request error: " + JSON.stringify(error));
       }
-      reject(error);
+      Max.post("Request error: " + JSON.stringify(error));
+      return reject(new Error(error));
     });
-    if (requestData) {
-      req.write(requestData);
+    if (controlValue) {
+      req.write(controlValue);
     }
     req.end();
   });

@@ -3,6 +3,7 @@
 Dirigera Max is a Max MSP package for controlling smart lights connected to the Ikea's Dirigera gateway.
 
 <img src="dirigera.gif" width="600" height="338" />  
+<img src="dirigera.gif" width="400" height="400" />  
 
 ## How to start
 

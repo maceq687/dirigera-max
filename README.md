@@ -3,9 +3,17 @@
 Dirigera Max is a Max MSP package for controlling smart lights connected to the Ikea's Dirigera gateway.
 
 <img src="dirigera.gif" width="600" height="338" />  
-<img src="chandelir.gif" width="400" height="400" />  
+<a href="https://youtu.be/ymko4EB7bjQ" target="_blank"><img src="chandelir.gif" width="400" height="400" /></a>  
 
 ## How to start
+
+You can add the package to your machine running Max either using the Package Manager (recommended) or manually
+
+### Package Manager
+
+You can find the package in the Max's Package Manager - look for `Dirigera Max` in Remote Packages
+
+### Manually
 
 Clone this repository into your Max Packages folder.
 
@@ -25,7 +33,7 @@ You will find an example configuration file in the javascript folder, use it as 
 
 ### Compatibility
 
-This package was developed and tested on Dirigera gateway art. 105.034.06 and Tradfri smart light bulbs models: LED2109G6 (E27 CWS 806lm) and LED2201G8 (E27 WS 1055lm).
+This package was developed and tested on Dirigera gateway art. 105.034.06 and Tradfri smart light bulbs models: LED2109G6 (E27 CWS 806lm), LED2201G8 (E27 WS 1055lm) and LED1935C3 (E14 WW 250lm).
 
 ### Notes
 

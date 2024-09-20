@@ -9,7 +9,7 @@ Dirigera Max is a Max MSP package for controlling smart lights connected to the 
 
 You can add the package to your machine running Max either using the Package Manager (recommended) or manually
 
-### Package Manager
+### Package Manager (recommended)
 
 You can find the package in the Max's Package Manager - look for `Dirigera Max` in Remote Packages
 
@@ -17,14 +17,15 @@ You can find the package in the Max's Package Manager - look for `Dirigera Max` 
 
 Clone this repository into your Max Packages folder.
 
-Navigate to `<path-to-documents>\Max 8\Packages` on your computer, open command line there and enter:
+*Navigate to* `<path-to-documents>\Max 8\Packages` *on your computer, open command line there and enter:*
 ```
 git clone https://github.com/maceq687/dirigera-max
 ```
 
 ## Prerequisities
 
-To make it work you will need to create `dirigera_config.json` file in the javascript folder of the cloned project. The file must contain two variables:
+To make it work you will need to create `dirigera_config.json` file in the javascript folder in the package's directory: `<path-to-documents>\Max 8\Packages\Dirigera Max\javascript`.  
+The file must contain two variables:
 
 - `ip` - The IP address of the Dirigera gateway.
 - `auth_key` - Your access token for the Dirigera gateway. You can obtain this token using e.g. [dirigera](https://github.com/lpgera/dirigera) CLI tool by running `npx dirigera authenticate` and following the instructions.
